@@ -1,0 +1,24 @@
+{
+  "name": "generator-construct2",
+  "version": "0.1.0",
+  "description": "This is a construct2 scaffolds to create plugins and behaviors more easily",
+  "files": [
+    "generators/app",
+    "generators/plugin"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "construct2",
+    "construct2-plugin-creator"
+  ],
+  "author": "Michel Felipe",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "yeoman-generator": "^0.23.1",
+    "yosay": "^1.1.1"
+  }
+}
