@@ -1,16 +1,19 @@
-﻿function GetPluginSettings()
+var settingsFn = "Get<%= subgenerator %>Settings";
+
+window[settingsFn] = function ()
 {
 	return {
 		"name":			"<%= name %>",				// as appears in 'insert object' dialog, can be changed as long as "id" stays the same
 		"id":			"<%= name %>",				// this is used to identify this plugin and is saved to the project; never change it
-		"version":		"1.0",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
-		"description":	"<appears at the bottom of the insert object dialog>",
-		"author":		"<your name/organisation>",
-		"help url":		"<your website or a manual entry on Scirra.com>",
-		"category":		"General",				// Prefer to re-use existing categories, but you can set anything here
-		"type":			"world",				// either "world" (appears in layout and is drawn), else "object"
-		"rotatable":	true,					// only used when "type" is "world".  Enables an angle property on the object.
-		"flags":		0						// uncomment lines to enable flags...
+		"version":		"<%= version %>",					// (float in x.y format) Plugin version - C2 shows compatibility warnings based on this
+		"description":	"<%= description %>",
+		"author":		"<%= author %>",
+		"help url":		"<%= homepage %>", //your website or a manual entry on Scirra.com
+		"category":		"<%= category %>",				// Default: "General". Prefer to re-use existing categories, but you can set anything here
+		"type":			"<%= type %>",				// either "world" (appears in layout and is drawn), else "object"
+		"rotatable":	"<%= rotatable %>",					// only used when "type" is "world".  Enables an angle property on the object.
+		"flags":		"<%= flags %>"						// uncomment lines to enable flags...
+					//	| Default: 0
 					//	| pf_singleglobal		// exists project-wide, e.g. mouse, keyboard.  "type" must be "object".
 					//	| pf_texture			// object has a single texture (e.g. tiled background)
 					//	| pf_position_aces		// compare/set/get x, y...
@@ -102,7 +105,7 @@ ACESDone();
 
 var property_list = [
 	new cr.Property(ept_integer, 	"My property",		77,		"An example property.")
-	];
+];
 
 // Called by IDE when a new object type is to be created
 function CreateIDEObjectType()

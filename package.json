@@ -7,7 +7,7 @@
     "generators/plugin"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha"
   },
   "keywords": [
     "yeoman-generator",
@@ -20,5 +20,8 @@
     "mkdirp": "^0.5.1",
     "yeoman-generator": "^0.23.1",
     "yosay": "^1.1.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5"
   }
 }
