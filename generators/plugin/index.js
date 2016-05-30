@@ -20,6 +20,13 @@ module.exports = yeoman.Base.extend({
       desc: 'The name of the plugin',
       required: true
     });
+
+    this.argument('dirName', {
+      type: String,
+      desc: 'The directory name of the plugin',
+      required: false,
+      optional: true
+    });
   },
 
   prompting: function () {
@@ -77,10 +84,12 @@ module.exports = yeoman.Base.extend({
 
   default: function () {
 
-    if (this.name) {
-      mkdirp(this.name);
-      this.destinationRoot(this.destinationPath(this.name));
+    if (!this.dirName) {
+      this.dirName = _.snakeCase(this.name);
     }
+
+    mkdirp(this.dirName);
+    this.destinationRoot(this.destinationPath(this.dirName));
   },
 
   writing: function () {
@@ -96,7 +105,7 @@ module.exports = yeoman.Base.extend({
       _.extend({
         name: this.name,
         subgenerator: this.subgenerator,
-        id: _.capitalize(_.camelCase(this.name))
+        id: this.name
       }, this.props)
     );
 

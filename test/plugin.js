@@ -4,16 +4,19 @@ var assert = require('yeoman-assert');
 var path = require('path');
 
 describe('construct2:plugin', function () {
+  var runContext;
 
   before(function () {
 
-    return helpers.run(path.join(__dirname, '../generators/plugin'))
-                  .withArguments(['name'])
-                  .withPrompts({
-                    description: 'This is a plugin test',
-                    homepage: 'http://myplugin.io'
-                  })
-                  .toPromise();
+    runContext = helpers.run(path.join(__dirname, '../generators/plugin'))
+                        .withArguments(['MyPlugin'])
+                        .withPrompts({
+                          description: 'This is a plugin test',
+                          homepage: 'http://myplugin.io'
+                        });
+
+    return runContext.toPromise();
+
   });
 
   it('creates addon files', function () {
@@ -24,6 +27,11 @@ describe('construct2:plugin', function () {
     ];
 
     assert.file(expected);
+  });
+
+  it('the dirname should has underscore', function () {
+
+    assert.textEqual(runContext.generator.args[1], 'my_plugin');
   });
 
 });

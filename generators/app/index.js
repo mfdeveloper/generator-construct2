@@ -2,6 +2,7 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
 var path = require('path');
+var _ = require('lodash');
 
 const AddonsTypes = {
   PLUGIN: 'plugin',
@@ -30,6 +31,9 @@ module.exports = yeoman.Base.extend({
         type    : 'input',
         name    : 'name',
         message : 'Your construct2 addon name',
+        filter  : function (value) {
+          return Filters.addonName(name);
+        },
         default : path.basename(process.cwd())
     },{
         type    : 'list',
@@ -53,9 +57,18 @@ module.exports = yeoman.Base.extend({
 
       var subgenerator = 'construct2:'+this.props.type;
       this.composeWith(subgenerator, {
-        args: [ this.props.name ]
+        args: [ Filters.rawValue, this.props.name ]
       });
     }
 
   }
 });
+
+var Filters = module.exports.Filters = {
+  rawValue: '',
+  addonName: function (value) {
+    this.rawValue = value;
+    var str = (_.camelCase(value)).replace(value[0], value[0].toUpperCase());
+    return Promise.resolve(str);
+  }
+};
