@@ -7,7 +7,7 @@
     "generators/plugin"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha"
   },
   "keywords": [
     "yeoman-generator",
@@ -23,6 +23,8 @@
     "lodash": "^4.13.1"
   },
   "devDependencies": {
+    "coveralls": "^2.11.9",
+    "istanbul": "^0.4.3",
     "mocha": "^2.4.5"
   }
 }
