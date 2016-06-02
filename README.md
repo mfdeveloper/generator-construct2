@@ -1,4 +1,4 @@
-# generator-construct2
+# generator-construct2  [![Build Status](https://secure.travis-ci.org/mfdeveloper/generator-construct2.svg?branch=master)](https://travis-ci.org/mfdeveloper/generator-construct2)
 
 > Yeoman generator generating a Construct2 game engine plugins/behaviors
 
