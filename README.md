@@ -21,6 +21,11 @@ npm link
 * `yo construct2` shows a wizard for generating a construct2 plugin or behavior
 * `yo construct2:plugin <name>` generates a plugin with the name `<name>`
 
+## What do you see?
+
+After type ahead any command above, you will see something like this:
+
+![Example](https://raw.githubusercontent.com/mfdeveloper/generator-construct2/master/images/yo-construct2.png)
 
 ## What do you get?
 
